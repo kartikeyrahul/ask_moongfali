@@ -1,3 +1,28 @@
+// Automatically create falling rose petals when page loads
+window.onload = function() {
+    createPetals();
+};
+
+function createPetals() {
+    const container = document.getElementById('petals-container');
+    const petalCount = 35; // Number of petals on screen
+
+    for (let i = 0; i < petalCount; i++) {
+        let petal = document.createElement('div');
+        petal.classList.add('petal');
+        
+        // Randomize size, position, and animation speed
+        let size = Math.random() * 10 + 10; // 10px to 20px
+        petal.style.width = size + 'px';
+        petal.style.height = size + 'px';
+        petal.style.left = Math.random() * 100 + 'vw';
+        petal.style.animationDuration = (Math.random() * 4 + 4) + 's'; // Fall speed (4s to 8s)
+        petal.style.animationDelay = Math.random() * 5 + 's'; // Stagger start times
+        
+        container.appendChild(petal);
+    }
+}
+
 function startExperience() {
     let video = document.getElementById("bg-video");
     
