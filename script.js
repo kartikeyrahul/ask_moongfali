@@ -5,49 +5,46 @@ window.onload = function() {
 
 function createPetals() {
     const container = document.getElementById('petals-container');
-    const petalCount = 35; 
+    const petalCount = 35; // Number of petals on screen
 
     for (let i = 0; i < petalCount; i++) {
         let petal = document.createElement('div');
         petal.classList.add('petal');
         
-        let size = Math.random() * 10 + 10; 
+        // Randomize size, position, and animation speed
+        let size = Math.random() * 10 + 10; // 10px to 20px
         petal.style.width = size + 'px';
         petal.style.height = size + 'px';
         petal.style.left = Math.random() * 100 + 'vw';
-        petal.style.animationDuration = (Math.random() * 4 + 4) + 's'; 
-        petal.style.animationDelay = Math.random() * 5 + 's'; 
+        petal.style.animationDuration = (Math.random() * 4 + 4) + 's'; // Fall speed (4s to 8s)
+        petal.style.animationDelay = Math.random() * 5 + 's'; // Stagger start times
         
         container.appendChild(petal);
     }
 }
 
-let videoPlayed = false;
+function startExperience() {
+    let video = document.getElementById("bg-video");
+    
+    video.muted = false;
+    video.volume = 0.8; 
+    video.play().catch(error => console.log("Video play failed:", error));
+    
+    showPage('page1');
+}
 
-function showPage(nextPageId) {
-    // Play video on first click if not already playing
-    if(!videoPlayed) {
-        let video = document.getElementById("bg-video");
-        video.muted = false;
-        video.volume = 0.8; 
-        video.play().catch(error => console.log("Video play failed:", error));
-        videoPlayed = true;
-    }
-
-    // Hide all cards smoothly
+function showPage(pageId) {
     const pages = document.querySelectorAll('.glass-card');
     pages.forEach(page => {
         page.classList.remove('active');
+        page.classList.add('hidden');
     });
 
-    // Show the new card smoothly
-    const nextCard = document.getElementById(nextPageId);
-    if(nextCard) {
-        nextCard.classList.add('active');
-    }
+    const nextPage = document.getElementById(pageId);
+    nextPage.classList.remove('hidden');
+    nextPage.classList.add('active');
 
-    // Trigger Confetti and Sound on the final page
-    if (nextPageId === 'yes-page') {
+    if (pageId === 'yes-page') {
         let crackers = document.getElementById("cracker-sound");
         if(crackers) {
             crackers.volume = 1.0;
@@ -57,7 +54,6 @@ function showPage(nextPageId) {
     }
 }
 
-// Ensure the buttons run away smoothly
 const runawayButtons = document.querySelectorAll('.runaway-btn');
 
 runawayButtons.forEach(btn => {
