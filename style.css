@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+    color: white; 
+}
+
+/* Background Video Setup */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-color: #000;
+}
+
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85; 
+}
+
+/* Darker cinematic overlay with a tiny hint of romance (deep plum/reddish tint) */
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(20,5,5,0.4) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: -1;
+}
+
+/* Premium Dark Frosted Glass Effect with subtle romantic glow */
+.glass-card {
+    background: rgba(25, 10, 15, 0.5); /* Slightly warmer dark glass */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 45px 30px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(255, 77, 109, 0.1);
+    position: absolute;
+    z-index: 1;
+}
+
+/* Elegant smooth slide-up animation */
+.active {
+    display: block;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Floating Images */
+.floating {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin-bottom: 25px;
+    animation: float 4s ease-in-out infinite;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 2px solid rgba(255,255,255,0.05);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Cinematic Typography */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 15px rgba(255, 77, 109, 0.4); /* Romantic text glow */
+}
+
+p {
+    font-weight: 300;
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #e8e8e8;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    letter-spacing: 0.5px;
+}
+
+/* Heartbeat Animation for Intro */
+.heartbeat {
+    display: inline-block;
+    animation: beat 1.5s infinite;
+}
+
+@keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Button Styling */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    min-height: 60px;
+}
+
+.btn {
+    padding: 12px 35px;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+/* Deeper Romantic Red for Yes Button */
+.yes {
+    background: linear-gradient(135deg, #e63946, #ff4d6d);
+    color: white;
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+}
+
+.no {
+    background: rgba(255, 255, 255, 0.95);
+    color: #e63946;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.runaway-btn.moving {
+    position: fixed;
+    z-index: 9999;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+}
